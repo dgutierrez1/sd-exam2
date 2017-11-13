@@ -1,5 +1,8 @@
 # Parcial 2 - Daniel Gutierrez A00320176
 
+Repositorio: https://github.com/dgutierrez1/sd-exam2
+
+
 Este repositorio es para solucionar: 
 
 ```
@@ -81,6 +84,67 @@ Iniciar Fluentd
 ```
 sudo service td-agent start
 ```
+
+
+## Dockerfile de Fluentd
+
+```Dockerfile
+
+# fluentd/Dockerfile
+FROM fluent/fluentd:v0.12-debian
+RUN ["gem", "install", "fluent-plugin-elasticsearch", "--no-rdoc", "--no-ri", "--version", "1.9.2"]
+```
+
+## Docker-compose
+`docker-compose.yml`
+```yml
+version: '2'
+services:
+  web:
+    image: httpd:2.2.32
+    ports:
+      - "80:8080"
+    links:
+      - fluentd
+    logging:
+      driver: "fluentd"
+     options:        fluentd-address: localhost:23223        tag: httpd.access
+
+  fluentd:
+    build: ./fluentd
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+    links:
+      - "elasticsearch"
+    ports:
+      - "23223:23223"
+      - "23223:23223/udp"
+    logging:
+      driver: "json-file"
+
+  elasticsearch:
+    image: elasticsearch
+    expose: 
+      - 9200 
+    ports:
+      - "9200:9200"
+
+  kibana:
+    image: kibana
+    links:
+      - "elasticsearch"
+    ports:
+      - "5601:5601"
+```
+
+## Funcionamiento
+
+Se puede ver que esta funcionando bien por los log recibidos por Kibana. Por problemas en mi maquina con Docker realice el ejercicio en una maquina virtual de ip `192.168.10.20`. 
+
+Accediendo a `192.168.10.20:5601` se debe ver Kibana en funcionamiento
+
+<img src="img/kibana1.JPG" alt="IMAGE">
+
 
 
 
