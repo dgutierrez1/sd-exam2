@@ -5,11 +5,11 @@ Repositorio: https://github.com/dgutierrez1/sd-exam2
 
 Este repositorio es para solucionar: 
 
-```
+*`
 Deberá	realizar	el	aprovisionamiento	de	un	ambiente	compuesto	por	los	siguientes	elementos:
 En un servidor ejecutar: Un contenedor encargado de almacenar logs por medio de la aplicación Elasticsearch, un contenedor con la herramienta encargada de visualizar la información de los logs por medio de la aplicación Kibana.
 En uno o varios servidores ejecutar: un contenedor web y un contenedor encargado de hacer la conversión de logs por medio de la aplicación Fluentd
-```
+`*
 
 ## Comandos de linux necesarios para el aprovisionamiento de los servicios solicitados
 
@@ -146,6 +146,9 @@ Accediendo a `192.168.10.20:5601` se debe ver Kibana en funcionamiento
 <img src="img/kibana1.JPG" alt="IMAGE">
 
 
-
+Problema | Descripción |Solución
+------------ | ------------- |  -------------
+|Problema con los puertos ocupados de Fluentd|Al momento de iniciar el Fluentd se generaban errores porque ya habia puertos ocupados de la maquina | Busque varias opciones de imagenes de docker con diferentes configuraciones hasta que encontre una que no generaba el conflicto de puertos |
+|Falla de Docker con Windows| Docker lanzaba errores cuando se iniciaba en Windows | Use una maquina virtual creada con Vagrant para poder realizar el parcial. Accedi a la maquina a traves de ssh y procedi a realizar todo el ejericio ahi.  |
 
 
