@@ -145,6 +145,8 @@ Accediendo a `192.168.10.20:5601` se debe ver Kibana en funcionamiento
 
 <img src="img/kibana1.JPG" alt="IMAGE">
 
+## Problemas y soluciones
+
 
 Problema | Descripción |Solución
 ------------ | ------------- |  -------------
