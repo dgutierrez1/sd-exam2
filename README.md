@@ -1,6 +1,8 @@
 # Parcial 2 - Daniel Gutierrez A00320176
 
 Repositorio: https://github.com/dgutierrez1/sd-exam2
+ 
+## [PDF](https://github.com/dgutierrez1/sd-exam2/blob/A00320176/add-solution/Documento%20-%20Daniel%20Gutierrez%20A00320176.pdf)
 
 
 Este repositorio es para solucionar: 
